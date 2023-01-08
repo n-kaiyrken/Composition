@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="gameResult"
+            type="com.example.composition.domain.entity.GameResult" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +18,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="48dp"
-        tools:srcCompat="@drawable/smile_emoji"
+        app:emoji_result="@{gameResult.winner}"
         android:contentDescription="@string/game_over"
         app:layout_constraintBottom_toTopOf="@id/tv_required_answers"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/required_score"
+        app:required_answers="@{gameResult.gameSettings.minCountOfRightAnswers}"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +42,7 @@
         android:id="@+id/tv_score_answers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/score_answers"
+        app:score_answers="@{gameResult.countOfRightAnswers}"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/tv_required_percentage"
         app:layout_constraintStart_toStartOf="@id/tv_required_answers"
@@ -46,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/required_percentage"
+        app:required_percentage="@{gameResult.gameSettings.minPercentOfRightAnswers}"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/tv_required_answers"
         app:layout_constraintEnd_toEndOf="@id/tv_required_answers"
@@ -60,7 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/score_percentage"
+        app:score_percentage="@{gameResult}"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/tv_required_answers"
         app:layout_constraintEnd_toEndOf="@id/tv_required_answers"
@@ -78,3 +86,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
